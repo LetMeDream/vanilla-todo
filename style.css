@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(120deg, #b9d7ea, #d6e6f2);
+    color:white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+header{
+    font-size: 1.25rem;
+}
+header,
+form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+}
+form input, form button{
+     padding: 0.5rem;
+     font-size: 1rem;
+     border:none;
+     background: white;
+     border-radius: 0;
+}
+form button{
+    color:#93b4e4;
+    cursor:pointer;
+    transition: 0.3s all ease;
+}
+form button:hover{
+    background-color: #93b4e4;
+    color:white;
+}
+.todo-container{
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight: bold;
+}
+ul.todo-list{
+    min-width: 30%;
+}
+ul > .todo{
+    background-color:white;
+    margin:0.25rem;
+    display:flex;
+    justify-content: space-between;
+
+    transition: all .5s ease;
+}
+.todo-container li{
+    list-style-type: none;
+    flex:1;
+    padding: 0 .25rem;
+}
+.completedBtn,.deleteBtn{
+    cursor:pointer;
+    color:white;
+    background-color: #cadefc;
+    border:none;
+    border-radius: 0;
+    padding:.5rem;
+}
+.completedBtn{
+    background-color:rgb(84, 232, 84);
+}
+.deleteBtn{
+    background-color: rgb(220, 89, 89);
+}
+.fa-trash,.fa-check{
+    pointer-events: none;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+
+}
+/* Transitioning the deleted elements */
+.fall{
+    transform: translateY(4rem) rotate(25deg);
+    opacity: 0;
+}
+
+/* Selects seem to be tricky to style so, in order to do this properly
+   we shall first take all of its previous styling out and then style it's parent div
+*/
+.select select{
+    -ms-progress-appearance: none;
+    appearance: none;
+    outline: none;
+    border:none;
+}
+.select{
+    margin: 0.5rem;
+    position:relative;
+    overflow:hidden;
+}
+.select select{
+    width:8rem;
+    cursor:pointer;
+    padding:.5rem;
+    color:#93b4e4
+}
+.select::after{
+    content: "\25BC";
+    background:#93b4e4;
+    position:absolute;
+    right:0;
+    top:0;
+    pointer-events: none;
+    padding:.3rem .5rem;
+    transition: all .3s ease;
+}
+.select:hover::after{
+    color:#93b4e4;
+    background-color: white;
+}
