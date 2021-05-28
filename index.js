@@ -5,7 +5,7 @@ const btn = document.querySelector('.todo-button');
 const list = document.querySelector('.todo-list');
 const filterOpt = document.querySelector('.filter-todo');
 /* Array to save todos at localStorage */
-let todos = [];
+let todos = ['Feed Milo', 'Take Baguira Out', 'Water Plants', 'Get to Diamond'];
 
 getTodos();
 
@@ -110,7 +110,7 @@ function saveToLocalStorage(todo){
 
 function getTodos(){
 
-    if(localStorage.getItem('todos')){
+    if( (localStorage.getItem('todos')) && !todos ){
         todos = JSON.parse(localStorage.getItem('todos'));
         console.log(todos);
         todos.forEach( (todo, i) => {
@@ -137,6 +137,31 @@ function getTodos(){
 
         });
 
+    }else{
+        localStorage.setItem('todos', JSON.stringify(todos))
+        todos.forEach( (todo, i) => {
+
+            let div = document.createElement('div');
+            div.setAttribute('data-localRef', i);
+            div.classList.add('todo');
+            /* Creating buttons */
+            let completedBtn = document.createElement('button');
+            completedBtn.classList.add('completedBtn');
+            let deleteBtn = document.createElement('button');
+            deleteBtn.classList.add('deleteBtn');
+            /* Creating icons */
+            completedBtn.innerHTML = '<i class="fas fa-check"></i>'
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>'
+            /* Create li */
+            let li = document.createElement('li');
+            li.classList.add('todoLi')
+            let text = document.createTextNode(todo);
+            /* Appending */
+            li.appendChild(text);
+            list.appendChild(div);
+            div.append(li,completedBtn,deleteBtn)
+
+        });
     }
 
 }
