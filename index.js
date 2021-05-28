@@ -110,7 +110,7 @@ function saveToLocalStorage(todo){
 
 function getTodos(){
 
-    if( (localStorage.getItem('todos')==='[]') ){
+    if( !todos.length && (localStorage.getItem('todos')==='[]') ){
         todos = ['Feed Milo', 'Take Baguira Out', 'Water Plants', 'Get to Diamond'];
         console.log('not empty')
         todos.forEach( (todo, i) => {
@@ -137,7 +137,7 @@ function getTodos(){
 
         });
     }else{
-        todos = JSON.parse(localStorage.getItem('todos'));
+        todos = JSON.parse(localStorage.getItem('todos')) || [] ;
         console.log(todos);
         todos.forEach( (todo, i) => {
 
